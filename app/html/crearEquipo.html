@@ -1,0 +1,572 @@
+<div id = "crearEquipoModel">	
+
+	<div class="page-title">
+      <div class="title_left">
+        <h3>Crear Equipo</h3>
+      </div>
+    </div>
+
+    <div class="row">
+    	<form   class="form-horizontal " data-bind="submit: guardarEquipo">
+	      <div class="col-md-12 col-sm-12 col-xs-12">
+	        <div class="x_panel">
+	        	<!----------
+			
+				IDENTIFICCIÓN
+
+	          -->
+	          <div class="x_title">
+	            <h2><b>Identificació</b><small>Datos de Registro</small></h2>
+	            <ul class="nav navbar-right panel_toolbox">
+	              <li ><a data-toggle="collapse" data-target="#collapsabelIdentificacion" class="collapse-link"><i class="fa fa-chevron-up " ></i></a>
+	              </li>
+	              
+	            </ul>
+	            <div class="clearfix"></div>
+	          </div>
+	          <div class="x_content collapse in" id = "collapsabelIdentificacion">
+	            <br />
+	            
+	            	<div class = "row">
+		        		<div class="col-md-4 col-sm-6 col-xs-12">
+							<label >Id *</label>
+							<div class="form-group" >
+								<input type="text"  class="form-control text-uppercase"  data-bind="value: id" required/>
+							</div>
+							<label >Distintivo</label>
+							<div class="form-group" >
+								<input type="text"  class="form-control text-uppercase"   data-bind="value: distintivo" required/>
+							</div>
+							<label >Tipo de Equipo</label>
+							<div class="form-group" >
+								<select class="form-control" data-bind="options: tipoEquipos,
+											   value: selectedTipoEquipos,
+											   optionsCaption: 'Seleccion...'" >
+								</select>			              
+							</div>
+		          		</div>
+		          		
+		          		
+		          		<div class="col-md-4 col-sm-6 col-xs-12">
+							<label >Marca</label>
+							<div class="form-group" >
+								<input type="text"  class="form-control text-uppercase" data-bind="value: marca" required/>
+							</div>
+							<label >Serial</label>
+							<div class="form-group" >
+								<input type="text"  class="form-control text-uppercase" data-bind="value: serial" required />
+							</div>
+							<label >Modelo</label>
+							<div class="form-group" >
+								<input type="text"  class="form-control text-uppercase"  data-bind="value: modelo" required/>
+							</div>
+							
+		          		</div>
+
+
+		          		<div class="col-md-4 col-sm-6 col-xs-12">
+							<label >Ubicación</label>
+							<div class="form-group"  >
+								<select class="form-control" data-bind="options: ubicacion,
+											   value: selectedUbicacion,
+											   optionsCaption: 'Seleccion...'" required>
+								</select>
+							</div>
+							<div class="form-group" >
+								<label >Adquisición</label>
+								<select class="form-control" data-bind="options: adquisicionList,
+									   optionsText: 'descripcion',
+									   value: selectedAdquisicion,
+									   optionsCaption: 'Seleccion...'" required>
+								</select>
+							</div>
+							<div class="form-group" >
+								<label>Movilidad</label>
+								<select class="form-control" data-bind="options: movilidadList,
+									   optionsText: 'descripcion',
+									   value: selectedMovilidad,
+									   optionsCaption: 'Seleccion...'" required>
+								</select>
+							</div>
+		          		</div>
+		          	</div>
+		          	<div class="ln_solid"></div>
+	          </div>
+
+
+	          <!----------
+			
+				HISTÓRICO
+
+	          -->
+			  <div class="x_title">
+				<h2><b>Registro Histórico</b><small>Adquisción de Equipo</small></h2>
+				<ul class="nav navbar-right panel_toolbox">
+				  <li ><a data-toggle="collapse" data-target="#collapsabelHistorico" class="collapse-link"><i class="fa fa-chevron-up " ></i></a>
+				  </li>
+				  
+				</ul>
+				<div class="clearfix"></div>
+			  </div>
+			<div class="x_content collapse in" id = "collapsabelHistorico">
+	            <br />
+            	<div class = "row">
+	        		<div class="col-md-4 col-sm-6 col-xs-12">
+						<label >Fecha de Compra</label>
+						<div class="input-group date" >
+							<input type="text" class="form-control" id ="fechaCompra">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+						</div>
+					
+	                  <label >Fecha de Instalación</label>
+						<div class="input-group date" >
+							<input type="text" class="form-control" id ="fechaInstalacion" data-bind="value: fechaInstalacion" required>
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+						</div>
+	                 <label >Vencimiento Garantía</label>
+						<div class="input-group date" >
+							<input type="text" class="form-control" id ="fechaGarantia" data-bind="value: fechaGarantia" required>
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+						</div>
+	                   
+	          		</div>
+	          		
+	          		
+	          		<div class="col-md-4 col-sm-6 col-xs-12">
+						<label >Fecha Recibido</label>
+							<div class="input-group date" >
+							<input type="text" class="form-control" id ="fechaRecibido" data-bind="value: fechaRecibido" required>
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+						</div>
+						<label >Fecha de Fabriación</label>
+						<div class="input-group date" data-provide="datepicker">
+							<input type="text" class="form-control" id ="fechaFabricacion" data-bind="value: fechaFabricacion" required>
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+						</div>
+	          		  <label >Vida Útil (Años)</label>
+	                  <input type="number"  class="form-control" data-bind="value: vidaUtil"/>
+	          		</div>
+
+
+	          		<div class="col-md-4 col-sm-6 col-xs-12">
+	                  <label >Proveedor</label>
+						<div class="form-group" >
+						<input type="text"  class="form-control text-uppercase" data-bind="value: proveedor" required/>
+						</div>
+	          		  <label >Fabricante</label>
+						<div class="form-group" >
+							<input type="text"  class="form-control text-uppercase" data-bind="value: fabricante" required />
+					</div>
+					<label >Costo (COP) </label>
+						<div class="form-group" >
+							<input type="number"  class="form-control text-uppercase" data-bind="value: costo" required/>
+					</div>
+	          	</div>
+	          	<div class="ln_solid"></div>
+	         
+				</div>
+			</div>
+	          <!----------
+			
+				TÉCNICO
+
+	          -->
+	          <div class="x_title">
+	            <h2><b>Registro Técnico </b><small>Instalación</small></h2>
+	            <ul class="nav navbar-right panel_toolbox">
+	              <li ><a data-toggle="collapse" data-target="#collapsabelTécnico" class="collapse-link"><i class="fa fa-chevron-up " ></i></a>
+	              </li>
+	              
+	            </ul>
+	            <div class="clearfix"></div>
+	          </div>
+	          <div class="x_content collapse in" id = "collapsabelTécnico">
+	            <br />
+            	<div class = "row">
+	        		<div class="col-md-4 col-sm-6 col-xs-12">
+		              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Fuente de Alimentación</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch"   data-bind="checked: electricidad" /> Electricidad
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch" data-bind="checked: petroleo"/> Deriv. Petroleo
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch"  data-bind="checked: gas"/> Gas
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch"  data-bind="checked: aire"/> Aire
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch"  data-bind="checked: agua"/> Agua
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch"  data-bind="checked: fuenteVapor"/> Vapor
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch"  data-bind="checked: fuenteOtro"/> Otro
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+
+
+	                  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Tecnología Predominante</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <div class="">
+                            <div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch"  data-bind="checked: electrico"/> Eléctrico
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch" data-bind="checked: electronico" /> Electrónico
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch" data-bind="checked: mecanico" /> Mecánico
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch"  data-bind="checked: tecVapor"/> Vapor
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch" data-bind="checked: electromecanico" /> Electromecánico
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch"  data-bind="checked: hidraulico"/> Hidráulico
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch"  data-bind="checked: neumatico"/> Neumático
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="checkbox" class="js-switch" data-bind="checked: tecnologiaOtro" /> Otro
+	                            </label>
+                          	</div>
+                          </div>
+                        </div>
+                      </div>
+	          		</div>
+	          		
+	          		<div class="col-md-4 col-sm-6 col-xs-12">
+		              <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Clasificación Biomédica</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12" >
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch"  data-bind="checked: diagnostico"/> Diagnóstico
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch" data-bind="checked: prevencion" /> Prevención
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch" data-bind="checked: rehabilitacion" /> Rehabilitación
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch" data-bind="checked: analisisLab" /> Análisis de Lab
+                            </label>
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="checkbox" class="js-switch" data-bind="checked: ttoMtto" /> Tto. y Mtto. de la Vida
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+
+
+	                  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Clasificción Riesgo</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <div class="">
+                            <div class="">
+	                            <label>
+	                              <input type="radio" class="js-switch" name="clasRiesgo"  value="0" data-bind="checked: clasRiesgo" /> I
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="radio" class="js-switch" name="clasRiesgo"  value="1" data-bind="checked: clasRiesgo"/> IIa.
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="radio" class="js-switch" name="clasRiesgo"  value="2" data-bind="checked: clasRiesgo"/> IIb.
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="radio" class="js-switch" name="clasRiesgo"  value="3" data-bind="checked: clasRiesgo"/> III
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="radio" class="js-switch" name="clasRiesgo" value="4" data-bind="checked: clasRiesgo"/> N/A
+	                            </label>
+                          	</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado del Equipo</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <div class="">
+                            <div class="">
+	                            <label>
+	                              <input type="radio" class="js-switch" name="estadoEquipo" data-bind="checked: estadoEquipo" value="0" /> En operación
+	                            </label>
+                          	</div>
+                          	<div class="">
+	                            <label>
+	                              <input type="radio" class="js-switch"  name="estadoEquipo" data-bind="checked: estadoEquipo" value="1"/> Dado de baja
+	                            </label>
+                          	</div>
+                          </div>
+                        </div>
+                      </div>
+	          		</div>
+	          		
+	          		
+	          		<div class="col-md-4 col-sm-6 col-xs-12">
+						<label >Voltaje (Voltios)</label>
+						<div class="form-group" >
+							<div class="input-group">
+								<input type="number" class="form-control" placeholder="min" data-bind="value: voltajeMin"/>
+								<span class="input-group-addon">-</span>
+								<input type="number" class="form-control" placeholder="max" data-bind="value: voltajeMax"/>
+							</div>
+						</div>
+						<label >Corriente (Amperios)</label>
+						<div class="form-group" >
+							<input type="number"  class="form-control" data-bind="value: corriente"   />
+						</div>
+						<label >Potencia (Watts)</label>
+						<div class="form-group" >
+							<input type="number"  class="form-control"  data-bind="value: potencia"  />
+						</div>
+						<label >Temperatura (ºC)</label>
+						<div class="form-group" >
+							<input type="number"  class="form-control"   data-bind="value: temperatura" />
+						</div>
+						<label >Frecuencia (Hertz)</label>
+						<div class="form-group" >
+							<input type="number"  class="form-control"  data-bind="value: frecuencia"  />
+						</div>
+						<label >Presión (Psi)</label>
+						<div class="form-group" >
+							<input type="number"  class="form-control"   data-bind="value: presion" />
+						</div>
+						<label >Velocidad (RPM)</label>
+						<div class="form-group" >
+							<input type="number"  class="form-control"  data-bind="value: velocidad"  />
+						</div>
+						<label >Peso (Kg)</label>
+						<div class="form-group" >
+							<input type="number"  class="form-control"   data-bind="value: peso" />
+						</div>
+	          		</div>
+
+
+	          		
+
+	          	</div>
+	          	<div class="ln_solid"></div>
+	          </div>
+	          <!----------
+			
+				OTROS
+
+	          -->
+	          <div class="x_title">
+	            <h2><b>Otros</b><small>Datos Extras</small></h2>
+	            <ul class="nav navbar-right panel_toolbox">
+	              <li ><a data-toggle="collapse" data-target="#collapsabelotros" class="collapse-link"><i class="fa fa-chevron-up " ></i></a>
+	              </li>
+	              
+	            </ul>
+	            <div class="clearfix"></div>
+	          </div>
+	          <div class="x_content collapse in" id = "collapsabelotros">
+	            <br />
+	            
+	            	<div class = "row">
+		        		<div class="col-md-4 col-sm-6 col-xs-12">
+			              <div class="form-group">
+	                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Manuales</label>
+	                        <div class="col-md-9 col-sm-9 col-xs-12">
+	                          <div class="">
+	                            <div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch"  data-bind="checked: oepracion"/> Operación
+		                            </label>
+	                          	</div>
+	                          	<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch"  data-bind="checked: mantenimiento"/> Mantenimiento
+		                            </label>
+	                          	</div>
+	                          	<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch"  data-bind="checked: partes"/> Partes
+		                            </label>
+	                          	</div>
+	                          	<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch"  data-bind="checked: despiece"/> Despiece
+		                            </label>
+	                          	</div>
+	                          </div>
+	                        </div>
+	                      </div>
+	                      <div class="ln_solid"></div>
+			              
+		          		</div>
+		          		
+		          		
+		          		<div class="col-md-4 col-sm-6 col-xs-12">
+			              <div class="form-group">
+	                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Planos</label>
+	                        <div class="col-md-9 col-sm-9 col-xs-12">
+	                          <div class="">
+	                            <div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch" data-bind="checked: planosElectronico" /> Electrónico
+		                            </label>
+	                          	</div>
+	                          	<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch" data-bind="checked: planosElectrico" /> Eléctrico
+		                            </label>
+	                          	</div>
+								<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch" data-bind="checked: planosElectroMecanico" /> Electromecánico 
+		                            </label>
+	                          	</div>
+	                          	<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch" data-bind="checked: planosMecanico" /> Mecánico
+		                            </label>
+	                          	</div>
+	                          	<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch" data-bind="checked: planosNeumatico" /> Neumático
+		                            </label>
+	                          	</div>
+	                          	<div class="">
+		                            <label>
+		                              <input type="checkbox" class="js-switch" data-bind="checked: planosHidraulico" /> Hidráulico
+		                            </label>
+	                          	</div>
+	                          </div>
+	                        </div>
+	                      </div>
+	                      <div class="ln_solid"></div>
+			              
+		          		</div>
+
+
+		          		<div class="col-md-4 col-sm-6 col-xs-12">
+		          			<label >Observaciones</label>
+	                  		<textarea rows="10" class="resizable_textarea form-control" placeholder="Observaciones" data-bind="textInput: observaciones"></textarea>
+		          		</div>
+		          	</div>
+					<div class="ln_solid"></div>
+						
+	          </div>
+			  
+			  <div class="ln_solid"></div>
+				<div class="row">
+					<div class="form-horizontal text-right">
+						<button type="button" class="btn btn-secondary">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Guardar</button>
+					</div>
+				</div>
+
+
+
+	        </div>
+	      </div>
+      </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

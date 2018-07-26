@@ -1,0 +1,249 @@
+<div id = "usuariosModel">	
+
+	
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Usuarios</h3>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+	    <div class="row">
+
+	      <div class="clearfix"></div>
+
+	      <div class="col-md-12 col-sm-12 col-xs-12">
+	        <div class="x_panel">
+	           <div class="x_panel">
+					<div class="x_title">
+						<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>-->
+	                  	<button  class="btn btn-primary" data-bind="click: addUserShow">
+						  <i class="fa fa-plus"></i> Usuario
+						</button>
+						
+	                    <h2>Filtros</h2>
+	                    <ul class="nav navbar-left panel_toolbox">
+	                    
+	                      <li>
+	                      	<a class="closeFilters" data-toggle="collapse" data-target="#collapseFilters" >
+	                      		<i class="fa fa-filter"></i>
+	                      		
+	                      	</a>
+	                      </li>
+	                      <li class="">
+	                      	
+	                      </li>
+
+	                    </ul>
+	                    
+	                    <div class="clearfix"></div>
+	                  </div>
+	                  <div class="x_content collapse" id ="collapseFilters">
+
+	                    <!-- start form for validation -->
+	                    <form id="demo-form" data-parsley-validate>
+		                   	<div class="form-group">
+		                        
+		                        <div class="col-md-3 col-sm-3 col-xs-12">
+		                          	<label for="fullname">Id:</label>
+	                      			<input type="text" id="" class="form-control" name="fullname" required />
+		                        </div>
+		                    	<div class="col-md-3 col-sm-3 col-xs-12">
+		                          	<label for="fullname">Email:</label>
+	                      			<input type="text" id="" class="form-control" name="fullname" required />
+		                        </div>
+		                       	<div class="col-md-3 col-sm-6 col-xs-12 ">
+				                    <button  class="btn btn-primary align-baseline" data-bind="">
+								  		<i class="fa fa-search"></i> Buscar
+									</button>
+								</div>
+		                        
+	                      	</div>
+	                      
+	                    </form>
+	                    <!-- end form for validations -->
+
+	                  </div>
+	                </div>
+	          <div class="x_content">
+
+	            <table class="table table-bordered" id = "userTable">
+	              <thead>
+	                <tr>
+	                  <th>Id</th>
+					  <th>Email</th>
+	                  <th>Nombres</th>
+	                  <th>Apellidos</th>
+	                  <th>Teléfono</th>
+	                  <th>Centro</th>
+	                  <TH>Gestión</th>
+	                </tr>
+	              </thead>
+	              <tbody data-bind="foreach:  { data: userList, as: 'user' } ">
+	                 <tr>
+						<td data-bind="text: user.ID"></td>
+						<td data-bind="text: user.EMAIL"></td>
+						<td data-bind="text: user.NAMES"></td>
+						<td data-bind="text: user.LASTNAME"></td>
+						<td data-bind="text: user.PHONE"></td>
+						<td data-bind="text: user.CENTER"></td>
+						 
+						<td>
+							
+								<i class="fa fa-edit actionIcon" data-bind="click: function() {  editarUsuario(user)}" title ="Editar"></i>
+								<i class="fa fa-remove actionIcon" data-bind="click: function() {  eliminarUsuario(user); }" title ="Eliminar"></i>
+								<i class="fa fa-certificate actionIcon" data-bind="click: function() {  cargarFirma(user); }" title ="Cargar Firma"></i>
+						        
+						    
+						</td>
+					</tr>
+	              </tbody>
+	            </table>
+
+	          </div>
+	        </div>
+	      </div>
+
+	    </div>
+		
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id = "addUserModal">
+		<div class="modal-dialog modal-lg">
+		  <div class="modal-content">
+
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+		      </button>
+		      <h4 class="modal-title" id="myModalLabel">Agregar Usuario</h4>
+		    </div>
+		    <div class="modal-body">
+		    <form class="form-horizontal form-label-left" data-bind="submit : guardarUsuario" >
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Id</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" placeholder="ID" data-bind="value: formId" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Correo Electrónico</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="email" class="form-control" placeholder="correo@mail.com" data-bind="value: formEmail" required>
+                </div>
+              </div>
+			  <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Nombres</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control text-uppercase" placeholder="Nombres" data-bind="value: formNombres" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Apellidos</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control text-uppercase" placeholder="Apellidos" data-bind="value: formApelldios" required>
+                </div> 
+              </div>
+			   <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Teléfono de Contacto</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control text-uppercase" placeholder="Teléfono de Contacto" data-bind="value: formTelefono" required>
+                </div> 
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 " required="true">Centro</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+					<select class="form-control" data-bind="options: centrosList,
+									   optionsText: 'descripcion',
+									   value: selectedCentro,
+									   optionsCaption: 'Seleccion...'"></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Contraseña</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="password" class="form-control " placeholder="Contraseña"  data-bind="value: formPssw" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Confirmar Contraseña</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="password" class="form-control " placeholder="Confirmar Contraseña"  data-bind="value: formRePssw" required>
+                </div>
+              </div>
+
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				  <button type="submit" class="btn btn-primary" data-bind = "enable: buttonEnable">Guardar</button>
+				</div>
+			  
+            </form>
+		    </div>
+		    
+
+		  </div>
+		</div>
+	</div>
+
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id = "editUserModal">
+		<div class="modal-dialog modal-lg">
+		  <div class="modal-content">
+
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+		      </button>
+		      <h4 class="modal-title" id="myModalLabel">Editar Usuario</h4>
+		    </div>
+		    <div class="modal-body">
+		    <form class="form-horizontal form-label-left" data-bind="submit : guardarEditarUsuario" >
+              
+		      <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Id</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <span type="text" class="form-control text-uppercase" placeholder="iD" data-bind="text: formEditId" readonly></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo Electrónico</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="email" class="form-control" placeholder="CORREO ELECTRÓNICO" data-bind="value: formEditMail" >
+                </div>
+              </div>
+             
+			  <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Nombres</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control text-uppercase" placeholder="Nombres" data-bind="value: formEditNombres">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Apellidos</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control text-uppercase" placeholder="Apellidos" data-bind="value: formEditApelldios">
+                </div> 
+              </div>
+			  
+			  <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Teléfono</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="number" class="form-control text-uppercase" placeholder="Teléfono de Contacto"  data-bind="value: formEditTelefono">
+                </div>
+              </div>
+              
+
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
+				  <button type="submit" class="btn btn-primary" data-bind = "enable: buttonEnable">Guardar</button>
+				</div>
+			  
+            </form>
+		    </div>
+		    
+
+		  </div>
+		</div>
+	</div>
+</div>
+	
+
+  	
+
+

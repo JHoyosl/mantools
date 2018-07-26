@@ -1,0 +1,266 @@
+<div id = "equiposModel">	
+
+	
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Equipos</h3>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+	<div class="row">
+
+	  <div class="clearfix"></div>
+
+	  <div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="x_panel">
+		   <div class="x_panel">
+				<div class="x_title">
+					<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>-->
+					
+					<h2>Filtros</h2>
+
+					<ul class="nav navbar-left panel_toolbox">
+					
+					  <li>
+						<a class="closeFilters" data-toggle="collapse" data-target="#collapseFilters" >
+							<i class="fa fa-filter"></i>
+							
+						</a>
+					  </li>
+					  <li class="">
+						
+					  </li>
+
+					</ul>
+					<button  class="btn btn-primary" data-bind="click: goCrearEquipo">
+					  <i class="fa fa-plus"></i> Equipo
+					</button>
+					<div class="clearfix"></div>
+
+				  </div>
+				  <div class="x_content collapse" id ="collapseFilters">
+
+					<!-- start form for validation -->
+					<form id="demo-form" data-parsley-validate>
+						<div class="form-group">
+							
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<label for="fullname">Id</label>
+								<input type="text"  class="form-control" name="" />
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12">
+								<label for="fullname">Descripción</label>
+								<input type="text"  class="form-control" name="" />
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-12 ">
+								<button  class="btn btn-primary align-baseline" data-bind="">
+									<i class="fa fa-search"></i> Buscar
+								</button>
+							</div>
+						</div>
+
+					</form>
+					<!-- end form for validations -->
+
+				  </div>
+				</div>
+		  <div class="x_content" style="overflow-x:auto;">
+
+			<table class="table table-bordered" id = "userTable" >
+			  <thead>
+				<tr>
+				  <th>Id</th>
+				  <th>Descripción</th>
+				  <th>Serial</th>
+				  <th>Calibraciones</th>
+				  <th>Mantenimiento</th>
+				  <TH>Gestión</th>
+				</tr>
+			  </thead>
+			  <tbody data-bind="foreach:  { data: equiposList, as: 'equipo' } " >
+				 <tr>
+					<td style = "vertical-align: middle" data-bind="text: equipo.CONSECUTIVE"></td>
+					<td style = "vertical-align: middle" data-bind="text: equipo.DESCRIPTION"></td>
+					<td style = "vertical-align: middle" data-bind="text: equipo.SERIAL"></td>
+					<td style = "vertical-align: middle" data-bind="if: equipo.CALIBRATION" class = "text-center">
+						
+						<a href="javascript:void(0)" data-bind="text: equipo.CALIBRATION[0].DATE"></a>
+						
+					</td>
+					<td data-bind="if: equipo.MAINTENANCE" class = "text-center" style = "vertical-align: middle">
+							<!-- ko foreach:  { data: equipo.MAINTENANCE, as: 'mantenimiento' } -->
+								<div><a href="javascript:void(0)"data-bind="text: mantenimiento.DATE"></a></div>
+							<!-- /ko -->
+							<!-- <i class="fa fa-edit actionIcon" data-bind="click: function() {  editarUsuario(user)}" title ="Editar"></i> -->
+							<!-- <i class="fa fa-remove actionIcon" data-bind="click: function() {  eliminarUsuario(user); }" title ="Eliminar"></i> -->
+							<!-- <i class="fa fa-certificate actionIcon" data-bind="click: function() {  cargarFirma(user); }" title ="Cargar Firma"></i> -->
+							
+						
+					</td>
+					<td style = "max-width: 80px;">
+
+							<i class="fa fa-remove actionIcon" data-bind="click: function() {  eliminarEquipo(equipo); }" title ="Eliminar"></i> 
+							<i class="fa fa-edit actionIcon" data-bind="click: function() {  editarEquipo(equipo); }" title ="Editar"></i> 
+							<i class="fa fa-cog actionIcon"  data-bind="click: function() {  loadAgregarMantenimiento(equipo); }" title ="Mantenimiento"></i> 
+							<i class="fa fa-wrench actionIcon" data-bind="click: function() {  loadAgregarCalibracion(equipo); }" title ="Calibraciones"></i> 
+							<i class="fa fa-history actionIcon" data-bind="" title ="Historial"></i> 
+							<i class="fa fa-book actionIcon" data-bind="" title ="Cargar Documento"></i> 
+							 
+							<!-- <i class="fa fa-remove actionIcon" data-bind="click: function() {  eliminarUsuario(user); }" title ="Eliminar"></i> -->
+						
+					</td>
+				</tr>
+			  </tbody>
+			</table>
+
+		  </div>
+		</div>
+	  </div>
+
+	</div>
+	<!-- MODAL MANTENIMIENTO -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id = "agregarMantenimiento">
+		<div class="modal-dialog modal-lg">
+		  <div class="modal-content">
+
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+		      </button>
+		      <h4 class="modal-title" id="myModalLabel">Agregar Mantenimiento</h4>
+		    </div>
+		    <div class="modal-body">
+		    <form class="form-horizontal form-label-left" data-bind="submit: guardarMantenimiento" >
+              
+		      <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Id</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <span type="text" class="form-control text-uppercase" placeholder="iD" data-bind="text: agregarMantId" readonly></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha Mantenimiento</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div class="input-group date " data-provide="datepicker">
+						<input type="text" class="form-control" id ="fechaMantenimiento" data-bind="value: fechaMantenimiento" required>
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-th"></span>
+						</div>
+					</div>
+                </div>
+              </div>
+			  <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de Mantenimiento</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+					<select class="form-control" data-bind="options: tipoMantenimiento,
+					   optionsText: 'descripcion',
+					   value: selectedTipoMantenimiento,
+					   optionsCaption: 'Seleccion...'" required>
+					</select>
+                </div>
+              </div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">Documento</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<div class="form-group">
+							<div class="input-group input-file" name="Fichier1" id ="archivoMantenimiento">
+								<span class="input-group-btn">
+									<button class="btn btn-default btn-choose" type="button">Archivo</button>
+								</span>
+								<input type="text" class="form-control" placeholder='Choose a file...' required/>
+								<span class="input-group-btn">
+									 <button class="btn btn-warning btn-reset" type="button">Limpiar</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			 
+
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
+			  <button type="submit" class="btn btn-primary" data-bind = "enable: buttonEnable">Guardar</button>
+			</div>
+			  
+            </form>
+		    </div>
+		    
+
+		  </div>
+		</div>
+	</div>
+	
+	<!-- MODAL CALIBRACIONES -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id = "guardarCalibracion">
+		<div class="modal-dialog modal-lg">
+		  <div class="modal-content">
+
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+		      </button>
+		      <h4 class="modal-title" id="myModalLabel">Agregar Calibración</h4>
+		    </div>
+		    <div class="modal-body">
+		    <form class="form-horizontal form-label-left" data-bind="submit: guardarCalibracion" >
+              
+		      <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12 ">Id</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <span type="text" class="form-control text-uppercase" placeholder="iD" data-bind="text: agregarCaltId" readonly></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha Calibración</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div class="input-group date " data-provide="datepicker">
+						<input type="text" class="form-control" id ="fechaCalibracion" data-bind="value: fechaCalibracion" required>
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-th"></span>
+						</div>
+					</div>
+                </div>
+              </div>
+			  
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">Documento</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<div class="form-group">
+							<div class="input-group input-file" name="Fichier1" id ="archivoCalibracion">
+								<span class="input-group-btn">
+									<button class="btn btn-default btn-choose" type="button">Archivo</button>
+								</span>
+								<input type="text" class="form-control" placeholder='Choose a file...' required/>
+								<span class="input-group-btn">
+									 <button class="btn btn-warning btn-reset" type="button">Limpiar</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			 
+
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
+			  <button type="submit" class="btn btn-primary" data-bind = "enable: buttonEnable">Guardar</button>
+			</div>
+			  
+            </form>
+		    </div>
+		    
+
+		  </div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+</div>
+	
+
+  	
+
+
